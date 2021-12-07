@@ -1,6 +1,6 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// Direct calls
+// INFO: Doubly-recursive fib(40) with direct local calls
 
 var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
 (module

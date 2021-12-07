@@ -1,7 +1,6 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// Intermodule calls, this means we must have two modules and a shared table
-// (that is statically known to be shared).
+// INFO: Doubly-recursive fib(40) with indirect calls via a public table to one foreign-module function
 
 function makeFib(index, table) {
     return new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`

@@ -1,6 +1,6 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// Intramodule calls, and the table is private, so all optimizations apply.
+// INFO: Doubly-recursive fib(40) with indirect calls via a private table to one same-module function
 
 var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
 (module

@@ -1,7 +1,9 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// Intramodule calls, but the table is public, so the fact that we're calling
-// intramodule must be detected dynamically.
+// INFO: Doubly-recursive fib(40) with indirect calls via a public table to one same-module function
+
+// As the table is public, the fact that we're calling intramodule must be
+// detected dynamically.
 
 var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
 (module
