@@ -10,12 +10,29 @@ var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
 (module
   (import "M" "f" (func $external (param i32) (result i32)))
 
+  ;; The table has two functions.  The first function is imported and receives
+  ;; an indirect stub for that reason.  The second function is internal,
+  ;; and since the table is private to the module no stub should need to
+  ;; be created.
+  ;;
+  ;; TODO: What we want here is two more tables:
+  ;;
+  ;;  - one private table with only the internal function, and then we should
+  ;;    observe that run_internal (in its current form) has the same perf
+  ;;    as the function called through this new table which for sure does
+  ;;    not need a stub
+  ;;
+  ;;  - one public table with the internal function, we should see that
+  ;;    this is slower than the previous case.
+
   (type $ty (func (param i32) (result i32)))
   (table $t 2 funcref)
   (elem $t (i32.const 0) $external $internal)
 
   (func $internal (param i32) (result i32)
     (i32.add (local.get 0) (i32.const 37)))
+
+  ;; INFO: Iterated indirect call to cross-module trivial function, summing the results
 
   (func (export "run_external") (param $count i32) (result i32)
     (local $sum i32)
@@ -29,6 +46,8 @@ var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
         (br $LOOP)))
     (local.get $sum))
 
+  ;; INFO: Iterated indirect call to same-module trivial function, summing the results
+
   (func (export "run_internal") (param $count i32) (result i32)
     (local $sum i32)
     (block $END
@@ -40,6 +59,8 @@ var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
                    (local.get $sum)))
         (br $LOOP)))
     (local.get $sum))
+
+  ;; INFO: Iterated direct call to trivial function, summing the results
 
   (func (export "run_direct") (param $count i32) (result i32)
     (local $sum i32)

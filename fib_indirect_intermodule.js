@@ -18,10 +18,10 @@ function makeFib(index, table) {
 }
 
 var table = new WebAssembly.Table({initial:2, element:"funcref"})
-var Fib1 = makeFib(1, table);
-var Fib0 = makeFib(0, table);
-table.set(0, Fib1.exports.fib);
-table.set(1, Fib0.exports.fib);
+var Fib0 = makeFib(1, table);
+var Fib1 = makeFib(0, table);
+table.set(0, Fib0.exports.fib);
+table.set(1, Fib1.exports.fib);
 
 assertEq(Fib0.exports.fib(10), 55);
 
