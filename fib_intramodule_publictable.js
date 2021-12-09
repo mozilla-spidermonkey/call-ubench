@@ -1,6 +1,6 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// INFO: Doubly-recursive fib(40) with indirect calls via a public table to one same-module function
+// INFO: Doubly-recursive fib(40) with indirect calls via a public table to one same-module function, table initialized by elem
 
 // As the table is public, the fact that we're calling intramodule must be
 // detected dynamically.

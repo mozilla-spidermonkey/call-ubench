@@ -1,6 +1,6 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// INFO: Doubly-recursive fib(40) with indirect calls via a private table to a set of same-module functions
+// INFO: Doubly-recursive fib(40) with indirect calls via a private table to a set of same-module functions, table initialized by elem
 
 var ins = new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
 (module

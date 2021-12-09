@@ -1,6 +1,6 @@
 /* Author: Lars T Hansen, Mozilla */
 
-// INFO: Doubly-recursive fib(40) with indirect calls via a public table to a set of foreign-module functions
+// INFO: Doubly-recursive fib(40) with indirect calls via a public table to a set of foreign-module functions, tables initialized by Table.set
 
 function makeFib(calltable) {
     return new WebAssembly.Instance(new WebAssembly.Module(wasmTextToBinary(`
