@@ -30,8 +30,5 @@ while (runs-- > 0) {
     var then = Date.now();
     Fib0.exports.fib(40);
     var now = Date.now();
-    print("fib/public-table/cross-module " + (now - then));
+    print("fib_fixed_intermodule_publictable_tableset " + (now - then));
 }
-
-
-

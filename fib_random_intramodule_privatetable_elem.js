@@ -72,6 +72,5 @@ while (runs-- > 0) {
     var then = Date.now();
     ins.exports.fib(40);
     var now = Date.now();
-    print("fib-random/private-table/same-module " + (now - then));
+    print("fib_random_intramodule_privatetable_elem " + (now - then));
 }
-

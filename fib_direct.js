@@ -18,7 +18,7 @@ while (runs-- > 0) {
     var then = Date.now();
     ins.exports.fib(40);
     var now = Date.now();
-    print("fib/direct/same-module " + (now - then));
+    print("fib_direct " + (now - then));
 }
 
 
