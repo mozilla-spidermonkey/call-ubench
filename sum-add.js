@@ -86,13 +86,13 @@ var runs = (function () { let k = Number(os.getenv("RUNS")); return isNaN(k) || 
 while (runs-- > 0) {
     var then = performance.now();
     ins.exports.run_external(iter);
-    print("call/private-table/cross-module " + (performance.now() - then));
+    print("sum-add/private-table/cross-module " + (performance.now() - then));
 
     var then = performance.now();
     ins.exports.run_internal(iter);
-    print("call/private-table/same-module " + (performance.now() - then));
+    print("sum-add/private-table/same-module " + (performance.now() - then));
 
     var then = performance.now();
     ins.exports.run_direct(iter);
-    print("call/direct/same-module " + (performance.now() - then));
+    print("sum-add/direct/same-module " + (performance.now() - then));
 }
