@@ -80,7 +80,7 @@ assertEq(ins.exports.run_external(3), 3*(8+42));
 assertEq(ins.exports.run_internal(3), 3*(7+37));
 assertEq(ins.exports.run_direct(3), 3*(7+37));
 
-var iter = 100000000;
+var iter = 1000000000;
 
 var runs = (function () { let k = Number(os.getenv("RUNS")); return isNaN(k) || k < 0 ? 1 : k })();
 while (runs-- > 0) {
